@@ -83,6 +83,11 @@
                 </div>
             </div>
             <div class=" max-w-full px-3 w-1/4 md:flex-none">
+                <datalist id="annuaire">
+                    @foreach($annuaire as $client)
+                        <option value="{{ $client->name }}">{{ $client->name }}</option>
+                    @endforeach
+                </datalist>
                 <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <img src="img/icons/Emerald Bar.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
@@ -92,7 +97,8 @@
                         <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
                         <h5 class="mb-0">800 Patates &nbsp&nbsp / &nbsp&nbsp 250 Laitues<br>50 Carottes &nbsp&nbsp / &nbsp&nbsp 50 Oignons<br>275 Farines<br><br><h5 class="font-semibold">385.5KG (3 Ponys & 3 Personnes)</h5></h5>
                         <form method="GET" action="/contrat/Restaurant">
-                            <input placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
+                            <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
+
                             <button class="mt-4 inline-block  px-4 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Générer le bon de livraison</button>
                         </form>
                     </div>
@@ -158,7 +164,7 @@
                         <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
                         <h5 class="mb-0">1000 Carottes &nbsp&nbsp / &nbsp&nbsp 500 Pêches<br>500 Framboises &nbsp&nbsp / &nbsp&nbsp 500 Fraises<br><br><h5 class="font-semibold">159KG (Livré par le vignoble)</h5></h5>
                         <form method="GET" action="/contrat/Vignoble">
-                            <input placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
+                            <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
                             <button class="mt-4 inline-block  px-4 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Générer le bon de livraison</button>
                         </form>
                     </div>
@@ -278,7 +284,10 @@
                   <option value="Weazel">Weazel News</option>
                 </select>
               </div>
-              <div class="md:flex md:items-center text-center justify-center">
+                <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
+
+                <div class="md:flex md:items-center text-center justify-center">
+
                 <input class="inline-block px-8 py-3 mt-4 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs" type="submit" value="Facturer">
               </div>
             </div>

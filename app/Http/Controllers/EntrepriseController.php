@@ -11,7 +11,7 @@ use PDF;
 
 class EntrepriseController extends Controller
 {
-    public function index($error = null)
+    public function index()
     {
         if (Auth::user()->rankLevel < 2) return redirect("/")->withErrors(['msg' => "Erreur : Vous n'avez pas accès à cette page."]);
 
@@ -29,18 +29,16 @@ class EntrepriseController extends Controller
 
         $products = $stocks->merge($teas)->split(2);
 
-        if (is_null($error)) {
-            return View::make("entreprise")->with([
-                "leftProducts"=>$products[0],
-                "rightProducts"=>$products[1],
-            ]);
-        } else {
-            return View::make("entreprise")->with([
-                "leftProducts"=>$products[0],
-                "rightProducts"=>$products[1],
-                'errorMessage' => $error
-            ]);
-        }
+        $annuaire = DB::table("annuaire")
+            ->select()
+            ->get()
+            ->sortBy("name");
+
+        return View::make("entreprise")->with([
+            "leftProducts"=>$products[0],
+            "rightProducts"=>$products[1],
+            "annuaire"=>$annuaire
+        ]);
     }
     public function upload(Request $request)
     {
@@ -74,7 +72,7 @@ class EntrepriseController extends Controller
                     'price' => [1600,750,100,100,6875],
                     'total' => 9425,
                     'id' => $fileID,
-                    'date' => date('m/d/Y')
+                    'date' => date('d/m/Y')
                 ];
                 $details = "Contrat Restaurant - 800 Patates, 250 Laitues, 50 Carottes, 50 Oignons, 275 Farines";
                 $total = 9425;
@@ -127,6 +125,7 @@ class EntrepriseController extends Controller
         foreach ($request->all() as $key => $item) {
             if ($key == "_token") continue;
             if ($key == "entreprise") continue;
+            if ($key == "contact") continue;
             if ($item == null) continue;
 
             if (str_contains($key, "Thé")) {
@@ -166,7 +165,7 @@ class EntrepriseController extends Controller
         if ($total == 0) return redirect()->route('entreprise')->withErrors(['msg' => "Erreur : Vous n'avez mis aucun produit."]);
 
         $data = [
-            'to' => '',
+            'to' => $request->input("contact"),
             'from' => Auth::user()->name,
             'quantity' => $quantity,
             'products' => $product,
