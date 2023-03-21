@@ -86,64 +86,64 @@ Technologies :
 ### MySQL
 
 - Annuaire  
-    :large_orange_diamond: **name** 
-    :large_orange_diamond: **numero** 
-    :large_orange_diamond: **entreprise** 
-    :large_orange_diamond: **details** 
+    :large_orange_diamond: **name**  
+    :large_orange_diamond: **numero**   
+    :large_orange_diamond: **entreprise**   
+    :large_orange_diamond: **details**   
 - Compta  
-    :large_orange_diamond: **week** 
-    :large_orange_diamond: **bankStart** 
-    :large_orange_diamond: **ca** 
-    :large_orange_diamond: **depenses** 
-    :large_orange_diamond: **benefices** 
-    :large_orange_diamond: **bankEnd** 
+    :large_orange_diamond: **week**  
+    :large_orange_diamond: **bankStart**  
+    :large_orange_diamond: **ca**   
+    :large_orange_diamond: **depenses**   
+    :large_orange_diamond: **benefices**   
+    :large_orange_diamond: **bankEnd**   
 - Comptes  
-    :large_orange_diamond: **discord** (ID Discord)
-    :large_orange_diamond: **user** (Nom RP)
-    :large_orange_diamond: **name** 
-    :large_orange_diamond: **montant** 
-    :large_orange_diamond: **details** 
-    :large_orange_diamond: **meta** 
-    :large_orange_diamond: **timestamp** 
+    :large_orange_diamond: **discord** (ID Discord)  
+    :large_orange_diamond: **user** (Nom RP)   
+    :large_orange_diamond: **name**    
+    :large_orange_diamond: **montant**    
+    :large_orange_diamond: **details**    
+    :large_orange_diamond: **meta**          
+    :large_orange_diamond: **timestamp**           
 - Files  
-    :large_orange_diamond: **fileID** 
-    :large_orange_diamond: **Entreprise**
-    :large_orange_diamond: **type** 
-    :large_orange_diamond: **details** 
+    :large_orange_diamond: **fileID**   
+    :large_orange_diamond: **Entreprise**             
+    :large_orange_diamond: **type**                
+    :large_orange_diamond: **details**                       
 - Frais  
-    :large_orange_diamond: **discord** (ID Discord)
-    :large_orange_diamond: **user** (Nom RP)
-    :large_orange_diamond: **type**
-    :large_orange_diamond: **montant** 
-    :large_orange_diamond: **timestamp** 
+    :large_orange_diamond: **discord** (ID Discord)                
+    :large_orange_diamond: **user** (Nom RP)               
+    :large_orange_diamond: **type**             
+    :large_orange_diamond: **montant**               
+    :large_orange_diamond: **timestamp**                 
 - Frais  
-    :large_orange_diamond: **user**
-    :large_orange_diamond: **time** 
-    :large_orange_diamond: **salary**
-    :large_orange_diamond: **start** 
-    :large_orange_diamond: **end** 
+    :large_orange_diamond: **user**                
+    :large_orange_diamond: **time**               
+    :large_orange_diamond: **salary**              
+    :large_orange_diamond: **start**                 
+    :large_orange_diamond: **end**             
 - Stock  
-    :large_orange_diamond: **name**
-    :large_orange_diamond: **stock** (-1 = Pas de stock, Ex : Panier de fruits)
-    :large_orange_diamond: **minStock**
-    :large_orange_diamond: **warnStock** 
-    :large_orange_diamond: **price** (0 = Pas en vente)
-    :large_orange_diamond: **entreprisePrice** (0 = Pas en vente)   
-    :large_orange_diamond: **contratPrice** (0 = Pas en vente)
-    :large_orange_diamond: **startAt** (2000-01-01 00:00:00 = Pas de suivi de production)  
-- Supérettes  
-    :large_orange_diamond: **name**
-    :large_orange_diamond: **total** 
-    :large_orange_diamond: **restant**
-    :large_orange_diamond: **endAt** 
-- Tea  
-    :large_orange_diamond: **name**
-    :large_orange_diamond: **stock**
-    :large_orange_diamond: **minStock**
+    :large_orange_diamond: **name**  
+    :large_orange_diamond: **stock** (-1 = Pas de stock, Ex : Panier de fruits)  
+    :large_orange_diamond: **minStock**  
     :large_orange_diamond: **warnStock**  
     :large_orange_diamond: **price** (0 = Pas en vente)  
-    :large_orange_diamond: **entreprisePrice** (0 = Pas en vente)   
+    :large_orange_diamond: **entreprisePrice** (0 = Pas en vente)     
     :large_orange_diamond: **contratPrice** (0 = Pas en vente)  
+    :large_orange_diamond: **startAt** (2000-01-01 00:00:00 = Pas de suivi de production)  
+- Supérettes  
+    :large_orange_diamond: **name** 
+    :large_orange_diamond: **total**          
+    :large_orange_diamond: **restant**                  
+    :large_orange_diamond: **endAt**                         
+- Tea  
+    :large_orange_diamond: **name**                
+    :large_orange_diamond: **stock**                            
+    :large_orange_diamond: **minStock**                 
+    :large_orange_diamond: **warnStock**                       
+    :large_orange_diamond: **price** (0 = Pas en vente)                              
+    :large_orange_diamond: **entreprisePrice** (0 = Pas en vente)                   
+    :large_orange_diamond: **contratPrice** (0 = Pas en vente)                 
 - Users  
     (seulement les infos utilisés)  
     :large_orange_diamond: **id**  
@@ -153,6 +153,7 @@ Technologies :
     :large_orange_diamond: **sex**  
     :large_orange_diamond: **salary**  
     :large_orange_diamond: **allowed**  
+
 
 
 
