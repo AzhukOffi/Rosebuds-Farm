@@ -32,9 +32,9 @@ class BonsDeLivraisonController extends Controller
             ->sortByDesc("id");
 
         return View::make("direction/livraisons")->with([
-            "livraisons"=>$livraisons,
-            "vignoble"=>$vignoble,
-            "resto"=>$resto,
+            "livraisons"=>$livraisons->slice(0, 5),
+            "vignoble"=>$vignoble->slice(0, 5),
+            "resto"=>$resto->slice(0, 5),
         ]);
     }
 }

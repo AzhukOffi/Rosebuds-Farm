@@ -370,12 +370,7 @@
         function updateValue(product, price) {
           let finalPrice = 0
 
-          if (contrat.checked) {
-            finalPrice = parseInt(price.split("/")[1])
-          } else {
             finalPrice = parseInt(price.split("/")[0])
-            console.log(finalPrice)
-          }
           let total = 0;
           let productTotal = finalPrice * document.getElementsByName(product)[0].value
 

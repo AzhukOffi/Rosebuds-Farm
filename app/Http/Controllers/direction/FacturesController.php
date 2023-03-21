@@ -43,10 +43,10 @@ class FacturesController extends Controller
 
 
         return View::make("direction/factures")->with([
-            "bennys"=>$bennys,
-            "vignoble"=>$vignoble,
-            "resto"=>$resto,
-            "others"=>$other,
+            "bennys"=>$bennys->slice(0, 5),
+            "vignoble"=>$vignoble->slice(0, 5),
+            "resto"=>$resto->slice(0, 5),
+            "others"=>$other->slice(0, 5),
         ]);
     }
 }

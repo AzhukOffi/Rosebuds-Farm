@@ -129,7 +129,7 @@
                 obj.data[i].push('<span class="material-symbols-rounded text-gray-800">' + JSON.parse(dataObject[i]["meta"].replace(/&#039;/g, '"'))["icon"] + "</span>");
                 obj.data[i].push(dataObject[i]["name"]);
                 obj.data[i].push(dataObject[i]["montant"]);
-                obj.data[i].push(dataObject[i]["details"]);
+                obj.data[i].push(dataObject[i]["details"].replace("&#039;", "'"));
                 obj.data[i].push(('0' + date.getDate()).slice(-2) + "/" + ('0' + date.getMonth()).slice(-2) + " - " + ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
             }
 

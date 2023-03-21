@@ -258,7 +258,7 @@
               obj.data[i].push('<b>' + dataObject[i]["user"] + '</b>');
               obj.data[i].push(dataObject[i]["name"]);
               obj.data[i].push(dataObject[i]["montant"]);
-              obj.data[i].push(dataObject[i]["details"]);
+              obj.data[i].push(dataObject[i]["details"].replace("&#039;", "'"));
               obj.data[i].push(('0' + date.getDate()).slice(-2) + "/" + ('0' + date.getMonth()).slice(-2) + " - " + ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
           }
 

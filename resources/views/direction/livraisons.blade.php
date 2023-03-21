@@ -126,7 +126,7 @@
                     @foreach($livraisons as $livraisonsLine)
                         <li class="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 rounded-t-inherit text-inherit rounded-xl">
                             <div class="flex flex-col">
-                                <h5 class="mb-1 font-bold leading-normal text-sm text-slate-700">{{ $livraisonsLine->details }}</h5>
+                                <h5 class="mb-1 font-bold leading-normal text-sm text-slate-700">{{ $livraisonsLine->Entreprise }} - {{ $livraisonsLine->details }}</h5>
                                 <span class="leading-tight text-xs">#{{ $livraisonsLine->fileID }}</span>
                             </div>
                             <div class="flex items-center leading-normal text-sm">

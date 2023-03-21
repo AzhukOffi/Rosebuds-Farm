@@ -143,7 +143,7 @@ class EntrepriseController extends Controller
                 array_push($price, $productPrice);
 
                 $total = $total + $productPrice;
-                $details = $details . $item . ", ";
+                $details = $details . $item . " " . $key . ", ";
             } else {
                 $stock = DB::table("stock")
                     ->select()
@@ -158,7 +158,7 @@ class EntrepriseController extends Controller
                 array_push($price, $productPrice);
 
                 $total = $total + $productPrice;
-                $details = $details . $item . " " . $item . ", ";
+                $details = $details . $item . " " . $key . ", ";
             }
         }
 
