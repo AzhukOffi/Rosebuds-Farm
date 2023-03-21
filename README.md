@@ -57,10 +57,12 @@ Technologies :
  ┃ ┗ :file_folder: js   
  ┃ ┗ :file_folder: fonts  
  ┃ ┗ :file_folder: img   
+ ┃  
  ┣ :file_folder: resources  
  ┃ ┗ :file_folder: views  
  ┣ :file_folder: resources   
  ┃ ┗ :page_with_curl: web.php  
+ ┃  
  ┣ :file_folder: storage   
  ┃ ┗ :file_folder: fonts  
  ┃ ┃ ┗ :page_with_curl: Roboto.ttf  
@@ -132,7 +134,7 @@ Technologies :
     :large_orange_diamond: **contratPrice** (0 = Pas en vente)  
     :large_orange_diamond: **startAt** (2000-01-01 00:00:00 = Pas de suivi de production)  
 - Supérettes  
-    :large_orange_diamond: **name** 
+    :large_orange_diamond: **name**   
     :large_orange_diamond: **total**          
     :large_orange_diamond: **restant**                  
     :large_orange_diamond: **endAt**                         
