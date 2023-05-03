@@ -16,7 +16,7 @@ class NotesDeFraisController extends Controller
             ->get()
             ->sortByDesc("timestamp");
 
-        return View::make("notes")->with([
+        return View::make("ferme/notes")->with([
             "notes"=>$notes,
             "date"=>now()
         ]);

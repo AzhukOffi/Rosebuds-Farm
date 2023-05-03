@@ -14,8 +14,13 @@ class TeaController extends Controller
             ->get()
             ->sortBy("id");
 
-        return View::make("tea")->with([
-            "infos"=>$teas
+        $livraisons = DB::table("livraisons")
+            ->select()
+            ->get();
+
+        return View::make("ferme/tea")->with([
+            "infos"=>$teas,
+            "livraisons"=>$livraisons
         ]);
     }
     public function produceTea($type)

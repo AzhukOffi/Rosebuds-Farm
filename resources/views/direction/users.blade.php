@@ -57,6 +57,13 @@
         @if($errors->any())
             <div class="relative w-full p-4 text-white bg-red-500 rounded-lg text-center">{{ $errors->first() }}</div>
         @endif
+        @if(Session::has('lien_embauche'))
+            <div class="relative w-full p-4 text-white bg-green-500 rounded-lg text-center text-white">
+                <h5>{{ url(Session::get('lien_embauche')) }}</h5>
+            </div>
+        @endif
+
+
 
     <div class="relative flex flex-col w-full min-w-0 mb-0 break-words border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border bg-white bg-unfocus" >
         <div class="flex-auto px-0 pt-0 pb-2">
@@ -96,7 +103,7 @@
                                   </span>
                                 </button>
                                 <a href="/licencier/{{ $user->id }}">
-                                    <button  type="button" class="inline-block px-5 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-red-600 to-red-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Licencier</button>
+                                    <button type="button" class="inline-block px-5 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-red-600 to-red-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Licencier</button>
                                 </a>
                             </td>
                         </tr>
@@ -113,7 +120,7 @@
                         <td></td>
                     </tr>
                     <tr class="text-center">
-                        <form method="POST" action="/embaucher">
+                        <form method="POST" action="/direction/embaucher">
                             @csrf
                             <td class="p-2 leading-normal ml-4 text-left align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                 <img src="{{ asset('img/icons/add.png') }}" class="inline-block align-middle items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl" alt="{{ $user->name }}" />
@@ -126,7 +133,6 @@
                                 </select>
                             </td>
                             <td class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
-                                <input placeholder="Identifiant" type="text" name="id" class="inline-block mr-4 text-center focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-1/3 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
                                 <button type="submit" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Embaucher</button>
                             </td>
                         </form>

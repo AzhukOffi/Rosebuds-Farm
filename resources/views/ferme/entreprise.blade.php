@@ -41,7 +41,7 @@
   </head>
 
   <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    @include("nav")
+    @include("ferme.nav")
 
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
       <!-- Navbar -->
@@ -69,121 +69,56 @@
         <div class="flex justify-center mt-5">
             <button id="uploadFile" data-toggle="modal" data-target="#import" type="button" class="inline-block  px-4 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Envoyer un fichier</button>
         </div>
-        <div class="flex flex-wrap -mx-3 columns-4 bg-white mt-5">
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/Benny's.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
+        <datalist id="annuaire">
+            @foreach($annuaire as $client)
+                <option value="{{ $client->name }}">{{ $client->name }}</option>
+            @endforeach
+        </datalist>
+        @foreach($livraisons as $livraisonGroup)
+            <div class="flex flex-wrap -mx-3 columns-4 bg-white mt-5">
+                @foreach($livraisonGroup as $livraison)
+                    <div class="max-w-full px-3 w-1/4 md:flex-none">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                            <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                                <img src="img/icons/{{ $livraison->entreprise }}.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="{{ $livraison->entreprise }}" />
+                            </div>
+                            @if($livraison->delivery == 0)
+                                <div class="flex-auto p-4 pt-0 text-center">
+                                    <h6 class="mb-0 text-center text-red-600">Aucune livraison hebdomadaire</h6>
+                                    <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
+                                    <h5 class="mb-0"></h5>
+                                </div>
+                            @else
+                                <div class="flex-auto p-4 pt-0 text-center">
+                                    <h6 class="mb-0 text-center">Livraison - {{ $livraison->quand }}</h6>
+                                    <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
+                                    <h5 class="mb-0">
+                                        @if ($livraison->Carottes != 0) {{ $livraison->Carottes }} Carottes<br> @endif
+                                            @if ($livraison->Fraises != 0) {{ $livraison->Fraises }} Fraises<br> @endif
+                                            @if ($livraison->Framboises != 0) {{ $livraison->Framboises }} Framboises<br> @endif
+                                            @if ($livraison->Laitues != 0) {{ $livraison->Laitues }} Laitues<br> @endif
+                                            @if ($livraison->Oignons != 0) {{ $livraison->Oignons }} Oignons<br> @endif
+                                            @if ($livraison->Patates != 0) {{ $livraison->Patates }} Patates<br> @endif
+                                            @if ($livraison->Pêches != 0) {{ $livraison->Pêches }} Pêches<br> @endif
+                                            @if ($livraison->Tomates != 0) {{ $livraison->Tomates }} Tomates<br> @endif
+                                            @if ($livraison->Farines != 0) {{ $livraison->Farines }} Farines<br> @endif
+                                            @if ($livraison->ThéCitron != 0) {{ $livraison->ThéCitron }} Thés aux citrons<br> @endif
+                                            @if ($livraison->ThéRouge != 0) {{ $livraison->ThéRouge }} Thé aux fruits rouges<br> @endif
+                                            @if ($livraison->ThéPeche != 0) {{ $livraison->ThéPeche }} Thé glacé à la pêche<br> @endif
+                                            @if ($livraison->ThéMenthe != 0) {{ $livraison->ThéMenthe }} Thé à la menthe<br> @endif
+                                            @if ($livraison->ThéVert != 0) {{ $livraison->ThéVert }} Thé vert<br> @endif
+                                    </h5>
+                                    <form method="GET" action="/contrat/{{ $livraison->entreprise }}">
+                                        <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
+                                        <button class="mt-4 inline-block  px-4 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Générer le bon de livraison</button>
+                                    </form>
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center text-red-600">Aucune livraison hebdomadaire</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0"></h5>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <datalist id="annuaire">
-                    @foreach($annuaire as $client)
-                        <option value="{{ $client->name }}">{{ $client->name }}</option>
-                    @endforeach
-                </datalist>
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/Emerald Bar.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center font-bold">Livraison - Mardi & Jeudi</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0">800 Patates &nbsp&nbsp / &nbsp&nbsp 250 Laitues<br>50 Carottes &nbsp&nbsp / &nbsp&nbsp 50 Oignons<br>275 Farines<br><br><h5 class="font-semibold">385.5KG (3 Ponys & 3 Personnes)</h5></h5>
-                        <form method="GET" action="/contrat/Restaurant">
-                            <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
-
-                            <button class="mt-4 inline-block  px-4 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Générer le bon de livraison</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/EMS.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center text-red-600">Aucune livraison hebdomadaire</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0"></h5>
-                    </div>
-                </div>
-            </div>
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/Downtown.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center text-red-600">Aucune livraison hebdomadaire</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0"></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 columns-4 bg-white mt-4">
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/LSPD.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center text-red-600">Aucune livraison hebdomadaire</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0"></h5>
-                    </div>
-                </div>
-            </div>
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/Ron.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center text-red-600">Aucune livraison hebdomadaire</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0"></h5>
-                    </div>
-                </div>
-            </div>
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/Vignoble.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center font-bold">Livraison - Lundi</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0">1000 Carottes &nbsp&nbsp / &nbsp&nbsp 500 Pêches<br>500 Framboises &nbsp&nbsp / &nbsp&nbsp 500 Fraises<br><br><h5 class="font-semibold">159KG (Livré par le vignoble)</h5></h5>
-                        <form method="GET" action="/contrat/Vignoble">
-                            <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">
-                            <button class="mt-4 inline-block  px-4 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Générer le bon de livraison</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class=" max-w-full px-3 w-1/4 md:flex-none">
-                <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <img src="img/icons/Weazel.webp" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="Bennys" />
-                    </div>
-                    <div class="flex-auto p-4 pt-0 text-center">
-                        <h6 class="mb-0 text-center text-red-600">Aucune livraison</h6>
-                        <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
-                        <h5 class="mb-0"></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
 
       <form method="POST" action="/facturerEntreprise">
         @csrf
@@ -274,14 +209,11 @@
               </div>
               <div class="mt-1 md:flex md:items-center text-center justify-center">
                 <select name="entreprise" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                  <option value="Benny's">Benny's</option>
-                  <option value="EMS">Pillbox Hospital</option>
-                  <option value="LSPD">LSPD</option>
-                  <option value="Restaurant">Emerald Bar</option>
-                  <option value="Ron">Ron Petroleum</option>
-                  <option value="Taxi">Downtown Cab Co.</option>
-                  <option value="Vignoble">Vignoble</option>
-                  <option value="Weazel">Weazel News</option>
+                    @foreach($livraisons as $livraisonGroup)
+                        @foreach($livraisonGroup as $livraison)
+                            <option value="{{ $livraison->entreprise }}">{{ $livraison->entreprise }}</option>
+                        @endforeach
+                    @endforeach
                 </select>
               </div>
                 <input list="annuaire" placeholder="Livré à" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="contact" type="text">

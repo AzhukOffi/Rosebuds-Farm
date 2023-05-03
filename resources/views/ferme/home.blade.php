@@ -36,7 +36,7 @@
   </head>
 
   <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    @include("nav")
+    @include("ferme.nav")
 
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
       <!-- Navbar -->
@@ -67,8 +67,8 @@
           <div class="w-full max-w-full px-3 w-1/5 md:flex-none">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <img src="/storage/photos/{{ $direction->name }}.png" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="{{ $direction->name }}" />
-              </div>
+                <img src="/storage/photos/{{ $direction->name }}.png" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt=" }}" />
+              </div>{{ $direction->name
               <div class="flex-auto p-4 pt-0 text-center">
                 <h6 class="mb-0 text-center">{{ $direction->name }}</h6>
                 <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
@@ -88,7 +88,7 @@
             <div class="w-full max-w-full px-3 w-1/5 md:flex-none">
               <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                  <img src="img/photos/{{ $user->name }}.png" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="{{ $user->name }}" />
+                  <img src="/storage/photos/{{ $user->name }}.png" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="{{ $user->name }}" />
                 </div>
                 <div class="flex-auto p-4 pt-0 text-center">
                   <h6 class="mb-0 text-center">{{ $user->name }}</h6>

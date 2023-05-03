@@ -187,25 +187,44 @@
             <li class="w-full mt-4">
                 <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60"></h6>
             </li>
-            @if (request()->is('annuaire'))
-                <li class="mt-0.5 w-full mb-0">
-                    <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/annuaire">
-                        <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                            <span class="material-symbols-rounded text-white">group</span>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Annuaire</span>
-                    </a>
-                </li>
-            @else
-                <li class="mt-0.5 w-full mb-0">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"  href="/annuaire">
-                        <div class="green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
-                            <span class="material-symbols-rounded text-gray-800">group</span>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Annuaire</span>
-                    </a>
-                </li>
-            @endif
+        @if (request()->is('annuaire'))
+            <li class="mt-0.5 w-full mb-0">
+                <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/annuaire">
+                    <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <span class="material-symbols-rounded text-white">group</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Annuaire</span>
+                </a>
+            </li>
+        @else
+            <li class="mt-0.5 w-full mb-0">
+                <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"  href="/annuaire">
+                    <div class="green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                        <span class="material-symbols-rounded text-gray-800">group</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Annuaire</span>
+                </a>
+            </li>
+        @endif
+        @if (request()->is('documentation'))
+            <li class="mt-0.5 w-full mb-0">
+                <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/documentation">
+                    <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <span class="material-symbols-rounded text-white">question_mark</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Documentation</span>
+                </a>
+            </li>
+        @else
+            <li class="mt-0.5 w-full mb-0">
+                <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"  href="/documentation">
+                    <div class="green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                        <span class="material-symbols-rounded text-gray-800">question_mark</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Documentation</span>
+                </a>
+            </li>
+        @endif
         @if (Auth::user()->rankLevel >= 4)
           <li class="w-full mt-4">
             <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60"></h6>

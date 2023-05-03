@@ -71,7 +71,7 @@
             border: 2px solid;
             border-color: black;
             width: 50%;
-            height: 40%;
+            height: 50%;
             line-height: 20%;
         }
 

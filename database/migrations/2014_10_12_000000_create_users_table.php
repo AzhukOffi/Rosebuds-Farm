@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->integer('salary')->default(250);
             $table->integer('allowed')->default(0);
 
-
             $table->string('email')->nullable()->unique();
             $table->string('avatar')->nullable();
 

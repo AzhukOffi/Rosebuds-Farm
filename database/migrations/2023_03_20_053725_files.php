@@ -18,7 +18,9 @@ return new class extends Migration
             $table->integer("fileID")->default(0);
             $table->string("Entreprise")->default("");
             $table->string("type")->default("");
-            $table->string("details")->default("");
+            $table->string("name")->default("");
+            $table->string("path")->default("");
+            $table->boolean("publicAccess")->default(0);
             $table->timestamp("timestamp")->useCurrent()->index();
         });
     }

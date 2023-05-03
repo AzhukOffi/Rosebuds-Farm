@@ -87,7 +87,7 @@
           </a>
         </li>
         @endif
-        @if (request()->is('direction/contrat'))
+       <!-- @if (request()->is('direction/contrat'))
         <li class="mt-2 w-full">
           <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/contrat">
             <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
@@ -105,7 +105,7 @@
             <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Contrats</span>
           </a>
         </li>
-        @endif
+        @endif-->
         <li class="w-full mt-4">
           <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Gestion employés</h6>
         </li>

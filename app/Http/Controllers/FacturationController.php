@@ -28,11 +28,11 @@ class FacturationController extends Controller
 
         $products = $stocks->merge($teas)->split(2);
 
-        return View::make("facturation")->with([
+        return View::make("ferme/facturation")->with([
             "leftProducts"=>$products[0],
             "rightProducts"=>$products[1],
             "annuaire"=>$annuaire
-        ]); 
+        ]);
     }
     public function facturer()
     {
@@ -71,7 +71,7 @@ class FacturationController extends Controller
             'details' => $details,
             'meta' => "{'icon': 'person'}"
         ]);
-        
+
         return redirect("/facturation");
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use View;
-use function Symfony\Component\String\length;
 
 class HomeController extends Controller
 {
@@ -42,10 +41,9 @@ class HomeController extends Controller
             }
         }
 
-        return View::make("home")->with([
+        return View::make("ferme/home")->with([
             "users"=>$usersSorted,
-            "directions"=>$directions,
-            "date"=>now()
+            "directions"=>$directions
         ]);
     }
 }

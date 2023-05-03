@@ -5,7 +5,10 @@ namespace App\Http\Controllers\direction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use View;
 
 class UsersController extends Controller
@@ -97,17 +100,42 @@ class UsersController extends Controller
             ->where("id", $id)
             ->update(['rankLevel' => 0,'rank' => "Apprenti",'salary' => 250, 'allowed' => 0]);
 
-        return redirect("/entreprise");
+        return redirect("/direction/users");
     }
     public function embaucher()
     {
         if (Auth::user()->rankLevel < 5) return redirect("/")->withErrors(['msg' => "Erreur : Vous n'avez pas accès à cette page."]);
-        if(request("sex")) $sex = "Apprentie";
-        else $sex = "Apprenti";
+        $token = Str::random(32);
 
-        DB::table("users")
-            ->insert(['id'=>request("id"), 'sex'=>(int)request("sex"), 'name'=>request("name"), 'rankLevel' => 0,'rank' => $sex,'salary' => 250, 'allowed' => 1]);
+        Cache::add($token . "_sex", request("sex"), now()->addMinutes(30));
+        Cache::add($token . "_name", request("name"), now()->addMinutes(30));
+
+        Session::flash('lien_embauche', '/embauche/' . $token);
+
 
         return redirect("/direction/users");
+    }
+    public function embauche_lien($token)
+    {
+        if (Auth::user()->allowed == 1) return redirect("/")->withErrors(['msg' => "Erreur : Vous n'avez pas accès à cette page."]);
+
+
+        $sex = Cache::get($token . "_sex");
+        $name = Cache::get($token . "_name");
+
+        Cache::delete($token . "_sex");
+        Cache::delete($token . "_name");
+
+        if ($sex == 0 ) $rank = "Apprenti";
+        else $rank = "Apprentie";
+
+        DB::table("users")
+            ->where("id", Auth::user()->id)
+            ->update(['allowed' => 1,'rank' => $rank,'salary' => 250, 'sex' => $sex, 'rankLevel' => 0, 'name' => $name]);
+
+        Session::flash('lien_embauche', '/embauche/' . $token);
+
+
+        return redirect("/");
     }
 }

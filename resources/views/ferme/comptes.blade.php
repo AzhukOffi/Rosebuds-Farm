@@ -39,7 +39,7 @@
   </head>
 
   <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    @include("nav")
+    @include("ferme.nav")
 
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
       <!-- Navbar -->
@@ -51,19 +51,19 @@
               <li class="leading-normal text-sm">
                 <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
               </li>
-              <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Annuaire</li>
+              <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Livre des comptes</li>
             </ol>
           </nav>
           </div>
         </div>
       </nav>
         <div class="max-w-full px-3 md:w-1/2 md:flex-none">
-            <h6 class="mb-0 font-bold">Annuaire</h6>
+            <h6 class="mb-0 font-bold">Livre des comptes</h6>
         </div>
         <div class="grid place-items-center w-full min-h-[140px] bg-[#f8fafc] p-6 border border-blue-grey-50 rounded-lg scroll-mt-48 overflow-x-scroll lg:overflow-visible">
             <div class="w-full max-w-full">
                 <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl rounded-2xl bg-clip-border">
-                    <div id="annuaire" class="table-responsive">
+                    <div id="comptes" class="table-responsive">
 
 
                     </div>
@@ -74,7 +74,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
     <script>
-        const convertedObject = convertObject(JSON.parse('{{ $annuaire }}'.replace(/&quot;/g, '"')));
+        const convertedObject = convertObject(JSON.parse('{{ $comptes }}'.replace(/&quot;/g, '"')));
 
         const classes = {
             bottom: "dataTable-bottom",
@@ -97,12 +97,10 @@
         };
 
 
-        const dataTable = new simpleDatatables.DataTable("#annuaire", {
+        const dataTable = new simpleDatatables.DataTable("#comptes", {
             searchable: true,
             data: convertedObject,
             fixedHeight: true,
-            perPage: 20,
-            perPageSelect: [10, 20, 30, 40, 50],
             classes: classes
         });
 
@@ -114,7 +112,8 @@
 
             let obj = {
                 // Quickly get the headings
-                headings: ["Nom", "Numéro", "Entreprise", "Détails"],
+                headings: ["", "Type", "Montant", "Détails", "Date"],
+
 
                 // data array
                 data: []
@@ -127,12 +126,14 @@
                 date = new Date(dataObject[i]["timestamp"])
 
                 obj.data[i] = [];
-                obj.data[i].push(dataObject[i]["name"].replace("&#039;", "'"));
-                obj.data[i].push(dataObject[i]["numero"]);
-                obj.data[i].push(dataObject[i]["entreprise"]);
-                obj.data[i].push(dataObject[i]["details"]);
+                obj.data[i].push('<span class="material-symbols-rounded text-gray-800">' + JSON.parse(dataObject[i]["meta"].replace(/&#039;/g, '"'))["icon"] + "</span>");
+                obj.data[i].push(dataObject[i]["name"]);
+                obj.data[i].push(dataObject[i]["montant"]);
+                obj.data[i].push(dataObject[i]["details"].replace("&#039;", "'"));
+                obj.data[i].push(('0' + date.getDate()).slice(-2) + "/" + ('0' + date.getMonth()).slice(-2) + " - " + ('0' + date.getHours()).slice(-2) + ":" + ('0' + date.getMinutes()).slice(-2));
             }
 
+            obj["data"] = obj["data"].reverse()
 
 
 

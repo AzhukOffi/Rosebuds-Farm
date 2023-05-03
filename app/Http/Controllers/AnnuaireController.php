@@ -14,7 +14,7 @@ class AnnuaireController extends Controller
             ->get()
             ->toJson();
 
-        return View::make("annuaire")->with([
+        return View::make("ferme/annuaire")->with([
             "annuaire"=>$annuaire
         ]);
     }

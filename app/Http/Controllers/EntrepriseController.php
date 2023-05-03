@@ -34,10 +34,15 @@ class EntrepriseController extends Controller
             ->get()
             ->sortBy("name");
 
-        return View::make("entreprise")->with([
+        $livraisons = DB::table("livraisons")
+            ->select()
+            ->get();
+
+        return View::make("ferme/entreprise")->with([
             "leftProducts"=>$products[0],
             "rightProducts"=>$products[1],
-            "annuaire"=>$annuaire
+            "annuaire"=>$annuaire,
+            "livraisons"=>$livraisons->split(2)
         ]);
     }
     public function upload(Request $request)
@@ -51,55 +56,98 @@ class EntrepriseController extends Controller
             $path = $request->file("pdf")->storeAs($destination, $fileID . ".pdf");
         }
 
-        DB::table("files")
-            ->insert(['fileID'=>$fileID, 'Entreprise'=>$request->input("entreprise"), 'type'=>$request->input("type"), 'details'=>$request->input("details")]);
+
+        DB::table("files")->insert([
+            'fileID' => $fileID,
+            'Entreprise' => $request->input("entreprise"),
+            'type' => $request->input("type"),
+            'details' => $request->input("details"),
+            'path' => $request->input("type") . "/" . $request->input("entreprise") . $fileID . ".pdf",
+            'publicAccess' => 0
+        ]);
 
         return redirect("/entreprise");
     }
     public function contrat(Request $request, $entreprise)
     {
+        $livraisons = DB::table("livraisons")
+            ->where("entreprise", $entreprise)
+            ->select()
+            ->get();
+
+        $stocks = DB::table("stock")
+            ->select()
+            ->where("entreprisePrice", '!=', 0)
+            ->get()
+            ->sortBy("name");
+
+        $teas = DB::table("teas")
+            ->select()
+            ->where("entreprisePrice", '!=', 0)
+            ->get()
+            ->sortBy("name");
+
+        $quantity = [];
+        $products = [];
+        $price = [];
+        $total = 0;
+        $details = "Contrat " . $entreprise . " - ";
+
+        foreach (array_keys((array)$livraisons[0]) as $product) {
+            if ($product == "id" || $product == "entreprise" || $product == "delivery"|| $product == "quand") continue;
+            if ($livraisons->first()->$product == 0) continue;
+
+            array_push($quantity, $livraisons[0]->$product);
+            array_push($products, $product);
+            if (str_contains($product, "Thé")) {
+                $number = $livraisons->first()->$product;
+                $tea = "";
+                switch ($product) {
+                    case "ThéCitron":
+                        $tea = "Thé au citron";
+                        break;
+                    case "ThéRouge":
+                        $tea = "Thé aux fruits rouges";
+                        break;
+                    case "ThéPeche":
+                        $tea = "Thé glacé à la pêche";
+                        break;
+                    case "ThéVert":
+                        $tea = "Thé vert";
+                        break;
+                    case "ThéMenthe":
+                        $tea = "Thé à la menthe";
+                        break;
+                }
+                $contratPrice = $teas->where("name", $tea)->first()->contratPrice;
+                array_push($price, $contratPrice * $number);
+                $details = $details . $tea . " " . $product . ", ";
+            } else {
+                $contratPrice = $stocks->where("name", $product)->first()->contratPrice;
+                $number = $livraisons->first()->$product;
+                array_push($price, $contratPrice * $number);
+                $details = $details . $livraisons->first()->$product . " " . $product . ", ";
+            }
+            $total += $contratPrice * $number;
+
+        }
+
         $fileID = rand(0, 99999);
-        $data = [];
         if ($request->input("contact") == null || $request->input("contact") == "") return redirect()->route('entreprise')->withErrors(['msg' => "Erreur : Vous devez indiquer la personne à qui vous livrer."]);
 
-        switch ($entreprise) {
-            case "Restaurant":
-                $data = [
-                    'to' => $request->input("contact"),
-                    'from' => Auth::user()->name,
-                    'quantity' => [800,250,50,50,275],
-                    'products' => ["Patates","Laitues","Carottes","Oignons","Farines"],
-                    'price' => [1600,750,100,100,6875],
-                    'total' => 9425,
-                    'id' => $fileID,
-                    'date' => date('d/m/Y')
-                ];
-                $details = "Contrat Restaurant - 800 Patates, 250 Laitues, 50 Carottes, 50 Oignons, 275 Farines";
-                $total = 9425;
+        $data = [
+            'to' => $request->input("contact"),
+            'from' => Auth::user()->name,
+            'quantity' => $quantity,
+            'products' => $products,
+            'price' => $price,
+            'total' => $total,
+            'id' => $fileID,
+            'date' => date('d/m/Y')
+        ];
 
-                $pdf = PDF::loadView('bondeLivraison', $data);
-                $pdf->save('/home/Ferme/storage/app/pdf/livraisonsToSign/' . $entreprise . '/' . $fileID . ".pdf");
-                break;
-            case "Vignoble":
-                $data = [
-                    'to' => $request->input("contact"),
-                    'from' => Auth::user()->name,
-                    'quantity' => array("1000","500","500","500"),
-                    'products' => array("Carottes","Pêches","Fraises","Framboises"),
-                    'price' => array(3000,1000,1000,1500),
-                    'total' => 6500,
-                    'id' => $fileID,
-                    'date' => date('d/m/Y')
-                ];
-                $details = "Contrat Vignoble - 1000 Carottes, 500 Pêches, 500 Fraises, 500 Framboises";
-                $total = 6500;
-
-                $pdf = PDF::loadView('bondeLivraison', $data);
-                $pdf->save('/home/Ferme/storage/app/pdf/livraisonsToSign/' . $entreprise . '/' . $fileID . ".pdf");
-                break;
-            default:
-                return redirect()->route('entreprise')->withErrors(['msg' => "Erreur : Une erreur inconnue est survenue."]);
-        }
+        $pdf = PDF::loadView('bondeLivraison', $data);
+        $pdf->save('/home/Ferme/storage/app/pdf/livraisonsToSign/' .  $fileID . ".pdf");
 
         DB::table("comptes")->insert([
             'discord' => Auth::user()->id,
@@ -110,7 +158,16 @@ class EntrepriseController extends Controller
             'meta' => "{'icon': 'factory'}"
         ]);
 
-        Session::flash('download.in.the.next.request', 'pdf/livraisonsToSign/' . $entreprise . '/' . $fileID . ".pdf");
+        DB::table("files")->insert([
+            'fileID' => $fileID,
+            'Entreprise' => str_replace("'", "", $entreprise),
+            'type' => "livraisonsToSign",
+            'name' => "Bon de livraison - " . now()->format("d/m/Y"),
+            'path' => "livraisonsToSign/" . $fileID . ".pdf",
+            'publicAccess' => 1
+        ]);
+
+        Session::flash('download.in.the.next.request', 'livraisons/' . $fileID);
 
         return redirect("/entreprise");
     }
@@ -179,7 +236,7 @@ class EntrepriseController extends Controller
         $pdf = PDF::loadView('bondeLivraison', $data);
 
 
-        $pdf->save('/home/Ferme/storage/app/pdf/livraisonsToSign/' . $request->input("entreprise") . '/' . $fileID . ".pdf");
+        $pdf->save('/home/Ferme/storage/app/pdf/livraisonsToSign/' . $fileID . ".pdf");
 
         DB::table("comptes")->insert([
             'discord' => Auth::user()->id,
@@ -188,6 +245,15 @@ class EntrepriseController extends Controller
             'montant' => $total,
             'details' => $details,
             'meta' => "{'icon': 'factory'}"
+        ]);
+
+        DB::table("files")->insert([
+            'fileID' => $fileID,
+            'Entreprise' => str_replace("'", "", $request->input("entreprise")),
+            'type' => "livraisonsToSign",
+            'name' => "Bon de livraison - " . now()->format("d/m/Y"),
+            'path' => "livraisonsToSign/" . $fileID . ".pdf",
+            'publicAccess' => 1
         ]);
 
         Session::flash('download.in.the.next.request', 'pdf/livraisonsToSign/' . $request->input("entreprise") . '/' . $fileID . ".pdf");

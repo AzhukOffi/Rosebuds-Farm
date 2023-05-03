@@ -11,7 +11,6 @@ class DirectionHomeController extends Controller
 {
     public function index(Request $request)
     {
-        if (Auth::user()->rankLevel < 4) return redirect("/")->withErrors(['msg' => "Erreur : Vous n'avez pas accès à cette page."]);
 
 
         $comptes = DB::table("comptes")->get()->toJson();

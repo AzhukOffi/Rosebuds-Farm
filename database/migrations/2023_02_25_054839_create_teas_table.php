@@ -24,11 +24,11 @@ return new class extends Migration
             $table->integer("contratPrice")->default(0);
         });
 
-        DB::table("teas")->insert(["name" => "Thé au citron", "price" => 1, "entreprisePrice" => 1, "contratPrice" => 1]);
-        DB::table("teas")->insert(["name" => "Thé aux fruits rouges", "price" => 1, "entreprisePrice" => 1, "contratPrice" => 1]);
-        DB::table("teas")->insert(["name" => "Thé glacé à la pêche", "price" => 1, "entreprisePrice" => 1, "contratPrice" => 1]);
-        DB::table("teas")->insert(["name" => "Thé à la menthe", "price" => 1, "entreprisePrice" => 1, "contratPrice" => 1]);
-        DB::table("teas")->insert(["name" => "Thé vert", "price" => 1, "entreprisePrice" => 1, "contratPrice" => 1]);
+        DB::table("teas")->insert(["name" => "Thé au citron", "price" => 30, "entreprisePrice" => 25, "contratPrice" => 25]);
+        DB::table("teas")->insert(["name" => "Thé aux fruits rouges", "price" => 30, "entreprisePrice" => 25, "contratPrice" => 25]);
+        DB::table("teas")->insert(["name" => "Thé glacé à la pêche", "price" => 25, "entreprisePrice" => 25, "contratPrice" => 25]);
+        DB::table("teas")->insert(["name" => "Thé à la menthe", "price" => 30, "entreprisePrice" => 25, "contratPrice" => 25]);
+        DB::table("teas")->insert(["name" => "Thé vert", "price" => 30, "entreprisePrice" => 25, "contratPrice" => 25]);
         DB::table("teas")->insert(["name" => "Bouteilles en verre"]);
 
     }

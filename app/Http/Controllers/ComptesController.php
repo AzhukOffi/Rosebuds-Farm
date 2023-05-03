@@ -16,7 +16,7 @@ class ComptesController extends Controller
             ->get()
             ->toJson();
 
-        return View::make("comptes")->with([
+        return View::make("ferme/comptes")->with([
             "comptes"=>$comptes,
             "date"=>now(),
             "semaine"=>now()->format("W")

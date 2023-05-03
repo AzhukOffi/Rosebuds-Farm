@@ -59,7 +59,7 @@
           </div>
         </div>
       </nav>
-      <div class="flex flex-wrap -mx-3">
+      <div class="flex flex-wrap -mx-3 mr-1">
         <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/5">
           <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="flex-auto p-4">
@@ -178,14 +178,14 @@
           </div>
         </div>
       </div>
-        <div class="w-full max-w-full">
+        <div class="w-full max-w-full mr-1">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl rounded-2xl mt-2 bg-clip-border">
                 <h6 style="font-size: 120%" class="mb-0 mt-5 ml-4 font-bold capitalize">Livre des comptes</h6>
                 <div id="comptes" class="table-responsive">
                 </div>
             </div>
         </div>
-        <div class="w-full max-w-full">
+        <div class="w-full max-w-full mr-1">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl rounded-2xl mt-2 bg-clip-border">
                 <h6 style="font-size: 120%" class="mb-0 mt-5 ml-4 font-bold capitalize">Notes de frais</h6>
                 <div id="frais" class="table-responsive">

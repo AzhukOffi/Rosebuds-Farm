@@ -23,7 +23,7 @@ class StockController extends Controller
 
         $stocks = $stock->merge($teas);
 
-        return View::make("stock")->with([
+        return View::make("ferme/stock")->with([
             "stocks"=>$stocks,
             "date"=>now()
         ]);

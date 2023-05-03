@@ -32,11 +32,11 @@
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
 
   <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    @include("nav")
+    @include("ferme.nav")
 
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
       <!-- Navbar -->
@@ -58,9 +58,9 @@
       @if($errors->any())
         <div class="relative w-full p-4 text-white bg-red-500 rounded-lg text-center">{{ $errors->first() }}</div>
       @endif
-      
+
       <form method="POST" action="/facturer">
-        @csrf 
+        @csrf
         <div class="relative flex flex-col w-full min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border bg-white bg-unfocus mt-5 ">
           <div class="p-6 pb-0 mb-0 rounded-t-2xl">
             <h5>Facturation client</h5>
@@ -160,9 +160,9 @@
             </div>
             </div>
           </div>
-        </div>      
+        </div>
     </form>
-      
+
 
     <!-- Javascript code -->
     <script>
@@ -175,7 +175,7 @@
         function updateValue(product, price) {
           let total = 0;
           let productTotal = price * document.getElementsByName(product)[0].value
-         
+
           document.getElementById(product).innerHTML = productTotal + " $"
           allPrice[product] = productTotal
 
@@ -190,7 +190,7 @@
     </script>
       <!-- end cards -->
     </main>
-    
+
   </body>
   <!-- plugin for charts  -->
   <script src="{{ url('js/plugins/chartjs.min.js') }}" async></script>
@@ -198,9 +198,9 @@
   <script src=" {{ url('js/plugins/perfect-scrollbar.min.js') }}" async></script>
   <!-- github button -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
- 
-  
- 
+
+
+
   <!-- main script file  -->
   <script src=" {{ url('js/soft-ui-dashboard-tailwind.js') }}" async></script>
 </html>

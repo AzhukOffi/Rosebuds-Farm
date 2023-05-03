@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnuaireController;
 use App\Http\Controllers\direction\BonsDeLivraisonController;
 use App\Http\Controllers\direction\ComptabiliteController;
 use App\Http\Controllers\direction\FacturesController;
+use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\noAccess;
 use App\Http\Controllers\NotesDeFraisController;
 use App\Http\Controllers\PDFcontroller;
@@ -17,6 +18,7 @@ use App\Http\Controllers\direction\DirectionHomeController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\FacturationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\viewPdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,32 +82,39 @@ Route::middleware('auth')->group(function() {
 
         Route::post('/upload', [EntrepriseController::class, "upload"]);
 
-        Route::post('/generatePDF', [EntrepriseController::class, "generatePDF"]);
-
         Route::post('/facturerEntreprise', [EntrepriseController::class, "facturerEntreprise"]);
 
         Route::get('/contrat/{entreprise}', [EntrepriseController::class, "contrat"])->name("contrat");
 
-        Route::get('/direction', [DirectionHomeController::class, "index"])->name('direction.index');
-
-        Route::get('/direction/comptabilite', [ComptabiliteController::class, "index"])->name('comptabilite.index');
-
-        Route::get('/direction/livraisons', [BonsDeLivraisonController::class, "index"]);
-
-        Route::get('/direction/factures', [FacturesController::class, "index"]);
-
-        Route::get('/direction/users', [UsersController::class, "index"])->name('comptabilite.index');
-
-        Route::post('/updateUser/{id}', [UsersController::class, "updateUser"])->name("updateUser");
-
-        Route::get('/licencier/{id}', [UsersController::class, "licencier"])->name("licencier");
-
-        Route::post('/embaucher', [UsersController::class, "embaucher"])->name("embaucher");
-
-        Route::get('/pdf/{type}/{entreprise}/{file}', PDFcontroller::class);
-
         Route::get('/annuaire', [AnnuaireController::class, "index"])->name("annuaire");
+
+        Route::get('/documentation', [DocumentationController::class, "index"])->name("documentation");
+
+        Route::middleware('isAdmin')->group(function() {
+            Route::get('/direction', [DirectionHomeController::class, "index"])->name('direction.index');
+
+            Route::get('/direction/comptabilite', [ComptabiliteController::class, "index"])->name('comptabilite.index');
+
+            Route::get('/direction/livraisons', [BonsDeLivraisonController::class, "index"]);
+
+            Route::get('/direction/factures', [FacturesController::class, "index"]);
+
+            Route::get('/direction/users', [UsersController::class, "index"])->name('comptabilite.index');
+
+            Route::post('/updateUser/{id}', [UsersController::class, "updateUser"])->name("updateUser");
+
+            Route::get('/licencier/{id}', [UsersController::class, "licencier"])->name("licencier");
+
+            Route::post('/direction/embaucher', [UsersController::class, "embaucher"])->name("embaucher");
+        });
     });
 
-
+    Route::get('/embauche/{token}', [UsersController::class, "embauche_lien"])->name("embauche_lien");
 });
+
+Route::post('/signPDF/{id}', [PDFcontroller::class, "sign"]);
+
+Route::get('/livraisons/{id}', [PDFcontroller::class, "view"]);
+
+Route::get('/pdf/{id}', [PDFcontroller::class, "index"])->name("pdf");
+

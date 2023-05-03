@@ -18,7 +18,7 @@ class PointeuseController extends Controller
             ->get()
             ->sortByDesc("id");
 
-        return View::make("pointeuse")->with([
+        return View::make("ferme/pointeuse")->with([
             "pointeuses"=>$pointeuses,
             "date"=>now()
         ]);

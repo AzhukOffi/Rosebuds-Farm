@@ -21,7 +21,7 @@ class VenteController extends Controller
             ->sortBy("id");
 
 
-        return View::make("vente")->with([
+        return View::make("ferme/vente")->with([
             "teas"=>$teas,
             "supérettes"=>$supérettes,
             "date"=>now()
