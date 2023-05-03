@@ -107,17 +107,17 @@ Technologies :
 ### MySQL
 
 - Annuaire  
-    :large_orange_diamond: **name** (Nom RP)
-    :large_orange_diamond: **numero** (Numéro RP)
-    :large_orange_diamond: **entreprise** (Entreprise RP)
-    :large_orange_diamond: **details** (Détails RP, grade, etc)
+    :large_orange_diamond: **name** (Nom RP) 
+    :large_orange_diamond: **numero** (Numéro RP) 
+    :large_orange_diamond: **entreprise** (Entreprise RP) 
+    :large_orange_diamond: **details** (Détails RP, grade, etc) 
 - Compta (Futur : Bilan)
     :large_orange_diamond: **week** (Numéro de semaine)
-    :large_orange_diamond: **bankStart** (Compte de l'entreprise en début de semaine)
-    :large_orange_diamond: **ca**
-    :large_orange_diamond: **depenses**  
-    :large_orange_diamond: **benefices** 
-    :large_orange_diamond: **bankEnd** (Compte de l'entreprise en fin de semaine)
+    :large_orange_diamond: **bankStart** (Compte de l'entreprise en début de semaine) 
+    :large_orange_diamond: **ca** 
+    :large_orange_diamond: **depenses**   
+    :large_orange_diamond: **benefices**  
+    :large_orange_diamond: **bankEnd** (Compte de l'entreprise en fin de semaine) 
 - Comptes  
     :large_orange_diamond: **discord** (ID Discord)  
     :large_orange_diamond: **user** (Nom RP)   
@@ -130,8 +130,8 @@ Technologies :
     :large_orange_diamond: **fileID**   
     :large_orange_diamond: **entreprise**             
     :large_orange_diamond: **type** (Bon de livraison/Facutre/Contrat)                
-    :large_orange_diamond: **name** (Nom du fichier)
-    :large_orange_diamond: **path** (emplacement du fichier dans le /storage/app/pdf/)
+    :large_orange_diamond: **name** (Nom du fichier) 
+    :large_orange_diamond: **path** (emplacement du fichier dans le /storage/app/pdf/) 
     :large_orange_diamond: **publicAccess** (Accessible en public)                   
 - Frais  
     :large_orange_diamond: **discord** (ID Discord)                
