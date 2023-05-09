@@ -1,11 +1,28 @@
 <!-- sidenav  -->
-<aside class="green-nav max-w-62.5 max-height ease-nav-brand fixed inset-y-0 my-4 ml-2 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent bg-unfocus">
+<aside class="z-100 green-nav max-w-62.5 max-height ease-nav-brand fixed inset-y-0 my-4 ml-2 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent bg-unfocus" id="navbar">
     <div class="h-19.5">
-      <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
-      <a class="block px-8 py-6 -0 text-sm whitespace-nowrap text-slate-700 flex justify-center" href="/">
-        <img src="img/RosebudsFull.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-12" alt="main_logo" />
-      </a>
+        <a onclick="closeNav()" class="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden">
+            <span onclick="closeNav()" class="material-symbols-outlined">
+            close
+            </span>
+        </a>
+
+        <a class="block px-8 py-6 -0 text-sm whitespace-nowrap text-slate-700 flex justify-center" href="/">
+            <img src="img/RosebudsFull.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-12" alt="main_logo" />
+        </a>
     </div>
+    <script>
+        var navBar = document.getElementById('navbar').classList
+        function openNav() {
+            navBar.add("translate-x-0")
+            navBar.add("shadow-soft-xl")
+        }
+        function closeNav() {
+            console.log("test")
+            navBar.remove("translate-x-0")
+            navBar.remove("shadow-soft-xl")
+        }
+    </script>
 
     <hr class="h-px mt-2 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
 
@@ -112,7 +129,7 @@
             <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                 <span class="material-symbols-rounded text-white">storefront</span>
             </div>
-            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Supérettes / Export</span>
+            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Supérettes / Farine</span>
           </a>
         </li>
         @else
@@ -121,7 +138,7 @@
             <div class="green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
               <span class="material-symbols-rounded text-gray-800">storefront</span>
             </div>
-            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Supérettes / Export</span>
+            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Supérettes / Farine</span>
           </a>
         </li>
         @endif
@@ -241,5 +258,13 @@
 
      </div>
 </aside>
-
+<li class="flex items-center pl-4 xl:hidden">
+    <a onclick="openNav()" class="block p-0 transition-all ease-nav-brand text-sm text-slate-500 mt-6 ml-2 w-2">
+        <div class="w-4.5 overflow-hidden">
+            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+            <i class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+            <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
+        </div>
+    </a>
+</li>
   <!-- end sidenav -->

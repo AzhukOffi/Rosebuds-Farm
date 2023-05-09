@@ -10,6 +10,7 @@ use App\Http\Controllers\NotesDeFraisController;
 use App\Http\Controllers\PDFcontroller;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\PointeuseController;
+use App\Http\Controllers\StorageController;
 use App\Http\Controllers\TeaController;
 use App\Http\Controllers\direction\UsersController;
 use App\Http\Controllers\VenteController;
@@ -89,6 +90,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/annuaire', [AnnuaireController::class, "index"])->name("annuaire");
 
         Route::get('/documentation', [DocumentationController::class, "index"])->name("documentation");
+
+        Route::get('/photos/{name}', [StorageController::class, "index"])->name("photos");
 
         Route::middleware('isAdmin')->group(function() {
             Route::get('/direction', [DirectionHomeController::class, "index"])->name('direction.index');

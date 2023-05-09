@@ -13,7 +13,6 @@ class FacturationController extends Controller
     {
         $stocks = DB::table("stock")
             ->select()
-            ->where("price", '!=', 0)
             ->get()
             ->sortBy("name");
         $teas = DB::table("teas")
@@ -21,14 +20,21 @@ class FacturationController extends Controller
             ->where("price", '!=', 0)
             ->get()
             ->sortBy("name");
+        $price = DB::table("price")
+            ->select()
+            ->where("client", "Particulier")
+            ->get()
+            ->sortBy("name");
+
         $annuaire = DB::table("annuaire")
             ->select()
             ->get()
             ->sortBy("name");
 
-        $products = $stocks->merge($teas)->split(2);
+        $products = $price->split(2);
 
         return View::make("ferme/facturation")->with([
+            "stocks"=>$stocks->merge($teas),
             "leftProducts"=>$products[0],
             "rightProducts"=>$products[1],
             "annuaire"=>$annuaire

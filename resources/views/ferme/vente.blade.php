@@ -40,21 +40,6 @@
     @include("ferme.nav")
 
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
-      <!-- Navbar -->
-      <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="true">
-        <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-          <nav>
-            <!-- breadcrumb -->
-            <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
-              <li class="leading-normal text-sm">
-                <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
-              </li>
-              <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Supérettes - Export</li>
-            </ol>
-          </nav>
-          </div>
-        </div>
-      </nav>
 
         @if($errors->any())
             <div class="relative w-full p-4 text-white bg-red-500 rounded-lg text-center mb-3">{{ $errors->first() }}</div>
@@ -92,11 +77,11 @@
               <img src="img/icons/Farines.png" class="relative text-white opacity-100 fas fa-landmark text-xl top-31/100 mx-auto" alt="24/7" />
             </div>
             <div class="flex-auto p-4 pt-0 text-center">
-              <h6 class="mb-0 text-center">Vente Farines</h6>
+              <h6 class="mb-0 text-center">Farines</h6>
               <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent">
               {{ Form::open(array('url' => 'vente/farine')) }}
               {{ Form::number('amount', '139',['class' => 'focus:shadow-soft-primary-outline mb-9 mt-11 text-xm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none']); }}
-              {{ Form::submit('Vendre', ['class' => 'inline-block px-8 py-3 mt-8 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs']); }}
+              {{ Form::submit('Vendre', ['class' => 'inline-block px-8 py-3 mt-8 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs']); }}{{ Form::submit('Stocker', ['class' => 'inline-block px-8 py-3 mt-8 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs']); }}
               {{ Form::close() }}
             </div>
           </div>

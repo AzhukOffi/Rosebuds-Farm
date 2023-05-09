@@ -84,7 +84,7 @@
                             <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                 <div class="flex px-2 py-1">
                                     <div>
-                                        <img src="{{ asset('storage/photos/' . $user->name . '.png') }}" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl" alt="{{ $user->name }}" />
+                                        <img src="/photos/{{ $user->name }}.png" class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl" alt="{{ $user->name }}" />
                                     </div>
                                     <div class="flex flex-col text-left ml-1">
                                         <h5 class="mb-0 leading-normal text-sm">{{ $user->name }}</h5>

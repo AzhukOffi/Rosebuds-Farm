@@ -83,9 +83,7 @@ class UsersController extends Controller
 
 
         if ($request->hasFile("photo")) {
-            $destination = "public/photos";
-            $image = $request->file("photo");
-            $path = $request->file("photo")->storeAs($destination, $user->name . ".png");
+            $request->file('photo')->storeAs('/', $user->name.".png"  ,'photos');
         }
 
         return redirect("/direction/users");
@@ -125,6 +123,8 @@ class UsersController extends Controller
 
         Cache::delete($token . "_sex");
         Cache::delete($token . "_name");
+
+        if ($sex == null || $name == null) return redirect("/")->withErrors(['msg' => "Erreur : Le lien est invalide."]);
 
         if ($sex == 0 ) $rank = "Apprenti";
         else $rank = "Apprentie";

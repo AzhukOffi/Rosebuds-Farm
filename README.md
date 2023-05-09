@@ -54,6 +54,7 @@ Technologies :
  ┃ ┃ ┣ :page_with_curl: 2023_03_19_040139_compta.php  
  ┃ ┃ ┣ :page_with_curl: 2023_03_20_053725_files.php  
  ┃ ┃ ┣ :page_with_curl: 2023_03_21_070852_notes_de_frais.php  
+ ┃ ┃ ┣ :page_with_curl: 2023_05_08_115502_price.php  
  ┃  
  ┣ :file_folder: public  
  ┃ ┗ :file_folder: css    
@@ -74,14 +75,13 @@ Technologies :
  ┃ ┃ ┗ :file_folder: pdf     
  ┃ ┃ ┃ ┗ :file_folder: facture  
  ┃ ┃ ┃ ┗ :file_folder: livraisons  
- ┃ ┃ ┃ ┗ :file_folder: livraisonsToSign  
- ┃ ┃ ┗ :file_folder: public     
- ┃ ┃ ┃ ┗ :file_folder: photos  
+ ┃ ┃ ┃ ┗ :file_folder: livraisonsToSign    
+ ┃ ┃ ┗ :file_folder: photos  
 
 ## TODO List
 
 - [ ] Mise au propre du CSS
-- [ ] Centraliser le stockage
+- [x] Centraliser le stockage
 - [ ] Mise au propre de MySQL
 - [ ] Ajout de personne dans l'annuaire via le site
 - [ ] Documentation (Comment utiliser le site, infos RP, etc)
@@ -111,28 +111,28 @@ Technologies :
     :large_orange_diamond: **numero** (Numéro RP)                
     :large_orange_diamond: **entreprise** (Entreprise RP)                
     :large_orange_diamond: **details** (Détails RP, grade, etc)                
-- Compta (Futur : Bilan)
-    :large_orange_diamond: **week** (Numéro de semaine)
+- Bilan                
+    :large_orange_diamond: **week** (Numéro de semaine)       
     :large_orange_diamond: **bankStart** (Compte de l'entreprise en début de semaine)                
-    :large_orange_diamond: **ca**                
-    :large_orange_diamond: **depenses**                  
-    :large_orange_diamond: **benefices**                 
-    :large_orange_diamond: **bankEnd** (Compte de l'entreprise en fin de semaine)                
+    :large_orange_diamond: **ca**       
+    :large_orange_diamond: **depenses**         
+    :large_orange_diamond: **benefices**        
+    :large_orange_diamond: **bankEnd** (Compte de l'entreprise en fin de semaine)       
 - Comptes  
-    :large_orange_diamond: **discord** (ID Discord)                 
-    :large_orange_diamond: **user** (Nom RP)                  
-    :large_orange_diamond: **name** (Type d'entrée : 24/7, Farine, etc)- A RENOMMER                 
-    :large_orange_diamond: **montant**                    
-    :large_orange_diamond: **details**                    
-    :large_orange_diamond: **meta** (Icone à afficher dans le livre des comptes                        
-    :large_orange_diamond: **timestamp**                          
+    :large_orange_diamond: **discord** (ID Discord)  
+    :large_orange_diamond: **user** (Nom RP)   
+    :large_orange_diamond: **name** (Type d'entrée : 24/7, Farine, etc)- A RENOMMER  
+    :large_orange_diamond: **montant**     
+    :large_orange_diamond: **details**     
+    :large_orange_diamond: **meta** (Icone à afficher dans le livre des comptes         
+    :large_orange_diamond: **timestamp**           
 - Files  
-    :large_orange_diamond: **fileID**                  
-    :large_orange_diamond: **entreprise**                            
-    :large_orange_diamond: **type** (Bon de livraison/Facutre/Contrat)                               
-    :large_orange_diamond: **name** (Nom du fichier)                
-    :large_orange_diamond: **path** (emplacement du fichier dans le /storage/app/pdf/)                
-    :large_orange_diamond: **publicAccess** (Accessible en public)                                  
+    :large_orange_diamond: **fileID**   
+    :large_orange_diamond: **entreprise**             
+    :large_orange_diamond: **type** (Bon de livraison/Facture/Contrat)                
+    :large_orange_diamond: **name** (Nom du fichier)       
+    :large_orange_diamond: **path** (emplacement du fichier dans le /storage/app/pdf/)       
+    :large_orange_diamond: **publicAccess** (Accessible en public)                   
 - Frais  
     :large_orange_diamond: **discord** (ID Discord)                
     :large_orange_diamond: **user** (Nom RP)               
@@ -146,7 +146,7 @@ Technologies :
     :large_orange_diamond: **salary**              
     :large_orange_diamond: **start**                 
     :large_orange_diamond: **end**             
-- Stock  (A rename -> Products)
+- Stock        
     :large_orange_diamond: **name**  
     :large_orange_diamond: **stock** (-1 = Pas de stock, Ex : Panier de fruits)  
     :large_orange_diamond: **minStock**  
@@ -177,7 +177,11 @@ Technologies :
     :large_orange_diamond: **sex**  
     :large_orange_diamond: **salary**  
     :large_orange_diamond: **allowed**  
-
+- Price  
+    :large_orange_diamond: **client** (Nom entreprise ou particulier)  
+    :large_orange_diamond: **product**          
+    :large_orange_diamond: **price**                  
+    :large_orange_diamond: **promo**     
 
 
 
