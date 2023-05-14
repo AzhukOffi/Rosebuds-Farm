@@ -18,4 +18,47 @@ class AnnuaireController extends Controller
             "annuaire"=>$annuaire
         ]);
     }
+    public function addAnnuaire()
+    {
+        $name = request("name");
+        $numero = request("numero");
+        $entreprise = request("entreprise");
+        $details = request("details");
+
+        if ($name == null) return redirect()->route('annuaire')->withErrors(['msg' => "Erreur : Veuillez entrer un nom."]);
+        if ($numero == null) $numero = "";
+        if ($details == null) $details = "";
+
+        DB::table("annuaire")
+            ->insert(['name' => $name,'numero' => $numero,'entreprise' => $entreprise,'details' => $details]);
+
+        return redirect("/annuaire");
+    }
+    public function editAnnuaire($id)
+    {
+        $name = request("name");
+        $numero = request("numero");
+        $entreprise = request("entreprise");
+        $details = request("details");
+
+        if ($name == null) return redirect()->route('annuaire')->withErrors(['msg' => "Erreur : Veuillez entrer un nom."]);
+        if ($numero == null) $numero = "";
+        if ($details == null) $details = "";
+
+        DB::table("annuaire")
+            ->where("id", $id)
+            ->update(['name' => $name,'numero' => $numero,'entreprise' => $entreprise,'details' => $details]);
+
+        return redirect("/annuaire");
+    }
+    public function removeAnnuaire($id)
+    {
+        if ($id == null) return redirect()->route('annuaire')->withErrors(['msg' => "Erreur : Une erreur est survenue."]);
+
+        DB::table("annuaire")
+            ->where("id", $id)
+            ->delete();
+
+        return redirect("/annuaire");
+    }
 }

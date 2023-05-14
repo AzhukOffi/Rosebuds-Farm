@@ -47,9 +47,9 @@
         <div class="relative w-full p-4 text-white bg-red-500 rounded-lg text-center mb-3">{{ $errors->first() }}</div>
       @endif
 
-      <div class="text-center">
+      <div class="text-center mt-20">
         <h1 class="font-bold capitalize text-xl">Direction</h1>
-        <div class="flex flex-wrap -mx-3 columns-3 justify-center mt-8">
+        <div class="flex flex-wrap -mx-3 columns-3 justify-center mt-4">
           @foreach ($directions as $direction)
           <div class="w-full max-w-full px-3 xl:w-1/5 ml-4 mr-4 md:flex-none">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="text-center">
-        <h1 class="font-bold capitalize text-xl mt-6">Employés</h1>
+        <h1 class="font-bold capitalize text-xl mt-8">Employés</h1>
 
         @foreach ($users as $userCollection)
           <div class="flex flex-wrap -mx-3 columns-3 justify-center mt-4">

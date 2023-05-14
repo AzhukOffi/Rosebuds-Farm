@@ -1,5 +1,5 @@
 <!-- sidenav  -->
-<aside class="z-100 green-nav max-w-62.5 max-height ease-nav-brand fixed inset-y-0 my-4 ml-2 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent bg-unfocus" id="navbar">
+<aside class="z-20 green-nav max-w-62.5 max-height ease-nav-brand fixed inset-y-0 my-4 ml-2 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent bg-unfocus" id="navbar">
     <div class="h-19.5">
         <a onclick="closeNav()" class="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden">
             <span onclick="closeNav()" class="material-symbols-outlined">

@@ -83,7 +83,8 @@ Technologies :
 - [ ] Mise au propre du CSS
 - [x] Centraliser le stockage
 - [ ] Mise au propre de MySQL
-- [ ] Ajout de personne dans l'annuaire via le site
+- [ ] Notes de frais customisé
+- [x] Ajout de personne dans l'annuaire via le site
 - [ ] Documentation (Comment utiliser le site, infos RP, etc)
 - Rework entreprise
     - [ ] Prix différent pour chaque entreprise
@@ -103,6 +104,10 @@ Technologies :
     
 - [ ] Page évent (Places des cubes, tour de tracteur, etc)
 - [ ] Mise au propre des permission (faire passer les vérifications de perms sur des Middleware)
+
+## Bug connu
+
+- [ ] Calcul du prix dans la facturation client
 
 ### MySQL
 

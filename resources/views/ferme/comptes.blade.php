@@ -45,7 +45,7 @@
         <div class="max-w-full px-3 md:w-1/2 md:flex-none">
             <h6 class="mb-0 font-bold">Livre des comptes</h6>
         </div>
-        <div class="grid place-items-center w-full min-h-[140px] bg-[#f8fafc] p-6 border border-blue-grey-50 rounded-lg scroll-mt-48 overflow-x-scroll lg:overflow-visible">
+        <div class="grid place-items-center w-full min-h-[140px] bg-[#f8fafc] p-6 rounded-lg scroll-mt-48 overflow-x-scroll lg:overflow-visible">
             <div class="w-full max-w-full">
                 <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl rounded-2xl bg-clip-border">
                     <div id="comptes" class="table-responsive">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Input;
 use View;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -80,19 +81,29 @@ class VenteController extends Controller
 
             if ($amount == null || is_int($amount)) return redirect()->route('vente.index')->withErrors(['msg' => "Erreur : Veuillez entrez un nombre valide."]);
 
-            DB::table("stock")
-                ->where("name", "Sacs en toile")
-                ->update(['stock' => DB::raw('stock - ' . $amount)]);
+
+            if (request("stock") == null) {
+                DB::table("stock")
+                    ->where("name", "Sacs en toile")
+                    ->update(['stock' => DB::raw('stock - ' . $amount)]);
 
 
-            DB::table("comptes")->insert([
-                'discord' => Auth::user()->id,
-                'user' => Auth::user()->name,
-                'name' => 'Export Farine',
-                'montant' => $amount*21,
-                'details' => '' . $amount . ' Farines',
-                'meta' => "{'icon': 'export_notes'}"
-            ]);
+                DB::table("comptes")->insert([
+                    'discord' => Auth::user()->id,
+                    'user' => Auth::user()->name,
+                    'name' => 'Export Farine',
+                    'montant' => $amount*21,
+                    'details' => '' . $amount . ' Farines',
+                    'meta' => "{'icon': 'export_notes'}"
+                ]);
+            } else {
+                DB::table("stock")
+                    ->where("name", "Sacs en toile")
+                    ->update(['stock' => DB::raw('stock - ' . $amount)]);
+                DB::table("stock")
+                    ->where("name", "Farines")
+                    ->update(['stock' => DB::raw('stock + ' . $amount)]);
+            }
 
             return redirect("/vente");
         }

@@ -89,7 +89,7 @@
                         @if ($stock->startAt < $date)
                           <p class="mb-0 font-bold leading-tight text-s text-green-700">Prêt</p>
                         @else
-                        <p class="mb-0 font-bold leading-tight text-s text-red-600">Pas Prêt</p>
+                        <p class="mb-0 font-bold leading-tight text-s text-red-600">Prêt à {{ \Carbon\Carbon::parse($stock->startAt)->format('H:i') }}</p>
                         @endif
                       @endif
                     @endif

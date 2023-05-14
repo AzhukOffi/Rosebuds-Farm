@@ -89,6 +89,12 @@ Route::middleware('auth')->group(function() {
 
         Route::get('/annuaire', [AnnuaireController::class, "index"])->name("annuaire");
 
+        Route::post('/addAnnuaire', [AnnuaireController::class, "addAnnuaire"]);
+
+        Route::post('/editAnnuaire/{id}', [AnnuaireController::class, "editAnnuaire"])->name("editAnnuaire");
+
+        Route::get('/removeAnnuaire/{id}', [AnnuaireController::class, "removeAnnuaire"])->name("removeAnnuaire");
+
         Route::get('/documentation', [DocumentationController::class, "index"])->name("documentation");
 
         Route::get('/photos/{name}', [StorageController::class, "index"])->name("photos");
