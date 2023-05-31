@@ -37,7 +37,7 @@ class FacturationController extends Controller
             "stocks"=>$stocks->merge($teas),
             "leftProducts"=>$products[0],
             "rightProducts"=>$products[1],
-            "annuaire"=>$annuaire
+            "annuaire"=>$annuaire,
         ]);
     }
     public function facturer()

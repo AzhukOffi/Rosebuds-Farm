@@ -76,7 +76,7 @@
                           <p class="mb-0 font-semibold leading-tight text-xs">{{ $product->price }} $</p>
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent m-auto text-center">
-                          <input autocomplete=off placeholder="Nombre de produits" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="{{ $product->product }}" type="number">
+                            <input autocomplete=off oninput="updateValue('{{ $product->product }}', {{ $product->price }}, {{ $product->promo }})" placeholder="Nombre de produits" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="{{ $product->product }}" type="number">
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <p id="{{ $product->product }}" class="mb-0 font-semibold leading-tight text-xs">{{request()->input($product->product) * $product->price }} $</p>
@@ -104,7 +104,7 @@
                           <p id="{{ $product->product }}" class="mb-0 font-semibold leading-tight text-xs">0 $</p>
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent m-auto text-center">
-                          <input autocomplete=off oninput="updateValue('{{ $product->product }}', {{ $product->price }})" placeholder="Nombre de produits" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="{{ $product->product }}" type="number">
+                          <input autocomplete=off oninput="updateValue('{{ $product->product }}', {{ $product->price }}, {{ $product->promo }})" placeholder="Nombre de produits" class="text-center focus:shadow-soft-primary-outline mt-4 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" name="{{ $product->product }}" type="number">
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <p class="mb-0 font-semibold leading-tight text-xs">{{ $product->price }} $</p>
@@ -156,9 +156,17 @@
 
         input.addEventListener("input", updateValue);
 
-        function updateValue(product, price) {
+        function updateValue(product, price, promo) {
           let total = 0;
-          let productTotal = price * document.getElementsByName(product)[0].value
+          let productTotal = 0;
+            console.log(price);
+            console.log(document.getElementsByName(product)[0].value);
+            console.log(promo);
+          if (promo === 0.33) {
+              productTotal = price * document.getElementsByName(product)[0].value / 3
+          } else {
+              productTotal = price * document.getElementsByName(product)[0].value * promo
+          }
 
           document.getElementById(product).innerHTML = productTotal + " $"
           allPrice[product] = productTotal
