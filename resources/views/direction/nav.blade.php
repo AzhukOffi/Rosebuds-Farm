@@ -27,6 +27,10 @@
           </a>
         </li>
         @endif
+
+          <li class="w-full mt-4">
+              <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Comptabilité</h6>
+          </li>
         @if (request()->is('direction/comptabilite'))
         <li class="mt-2 w-full">
           <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/comptabilite">
@@ -46,6 +50,44 @@
           </a>
         </li>
         @endif
+          @if (request()->is('direction/bilan'))
+              <li class="mt-2 w-full">
+                  <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/bilan">
+                      <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                          <span class="material-symbols-rounded text-white">timeline</span>
+                      </div>
+                      <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Bilan</span>
+                  </a>
+              </li>
+          @else
+              <li class="mt-0.5 w-full">
+                  <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/bilan">
+                      <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                          <span class="material-symbols-rounded text-gray-800">timeline</span>
+                      </div>
+                      <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Bilan</span>
+                  </a>
+              </li>
+          @endif
+          @if (request()->is('direction/gestion'))
+              <li class="mt-2 w-full">
+                  <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/gestion">
+                      <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                          <span class="material-symbols-rounded text-white">credit_score</span>
+                      </div>
+                      <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Gestion</span>
+                  </a>
+              </li>
+          @else
+              <li class="mt-0.5 w-full">
+                  <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/gestion">
+                      <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                          <span class="material-symbols-rounded text-gray-800">credit_score</span>
+                      </div>
+                      <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Gestion</span>
+                  </a>
+              </li>
+          @endif
         <li class="w-full mt-4">
           <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Relations entreprises</h6>
         </li>
@@ -87,58 +129,83 @@
           </a>
         </li>
         @endif
-       <!-- @if (request()->is('direction/contrat'))
-        <li class="mt-2 w-full">
-          <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/contrat">
-            <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                <span class="material-symbols-rounded text-white">edit_document</span>
-            </div>
-            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Contrats</span>
-          </a>
-        </li>
-        @else
-        <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/contrat">
-            <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
-              <span class="material-symbols-rounded text-gray-800">edit_document</span>
-            </div>
-            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Contrats</span>
-          </a>
-        </li>
-        @endif-->
+
+
         <li class="w-full mt-4">
-          <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Gestion employés</h6>
+            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Gestion employés</h6>
         </li>
         @if (request()->is('direction/users'))
         <li class="mt-2 w-full">
-          <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/users">
-            <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
-                <span class="material-symbols-rounded text-white">group</span>
-            </div>
-            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Employés</span>
-          </a>
+            <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/users">
+                <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                    <span class="material-symbols-rounded text-white">group</span>
+                </div>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Employés</span>
+            </a>
         </li>
         @else
         <li class="mt-0.5 w-full">
-          <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/users">
-            <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
-              <span class="material-symbols-rounded text-gray-800">group</span>
-            </div>
-            <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Employés</span>
-          </a>
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/users">
+                <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                <span class="material-symbols-rounded text-gray-800">group</span>
+                </div>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Employés</span>
+            </a>
         </li>
         @endif
-      <li class="w-full mt-4">
-        <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60"></h6>
-      </li>
-      <li class="mt-0.5 w-full">
-        <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/">
-          <div class="green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
-            <span class="material-symbols-rounded text-gray-800">open_in_new</span>
-          </div>
-          <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Panel employé</span>
-        </a>
-      </li>
+        <li class="w-full mt-4">
+            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Modification ferme</h6>
+        </li>
+        @if (request()->is('direction/price'))
+            <li class="mt-2 w-full">
+                <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/price">
+                    <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <span class="material-symbols-rounded text-white">attach_money</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Prix des produits</span>
+                </a>
+            </li>
+        @else
+            <li class="mt-0.5 w-full">
+                <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/price">
+                    <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                        <span class="material-symbols-rounded text-gray-800">attach_money</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Prix des produits</span>
+                </a>
+            </li>
+        @endif
+        @if (request()->is('direction/stock'))
+            <li class="mt-2 w-full">
+                <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors bg-unfocus" href="/direction/stock">
+                    <div class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <span class="material-symbols-rounded text-white">eco</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Stocks & Livraisons</span>
+                </a>
+            </li>
+        @else
+            <li class="mt-0.5 w-full">
+                <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/direction/stock">
+                    <div class="green-nav-icon green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                        <span class="material-symbols-rounded text-gray-800">eco</span>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Stocks & Livraisons</span>
+                </a>
+            </li>
+        @endif
+
+        <li class="w-full mt-4">
+            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60"></h6>
+        </li>
+        <li class="mt-0.5 w-full">
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="/">
+                <div class="green-nav-icon shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current stroke-0 text-center xl:p-2.5 bg-unfocus">
+                    <span class="material-symbols-rounded text-gray-800">open_in_new</span>
+                </div>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Panel employé</span>
+            </a>
+        </li>
     </ul>
   </div>
 </aside>
